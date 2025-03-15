@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MorphSVGPlugin.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            width: 300vw;
+            height: 100vh;
+        }
+        .section {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #87CEEB;
+            position: relative;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+        }
+        .back-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .morph-text {
+            font-size: 2em;
+            font-weight: bold;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="slider">
+        <div class="section" id="home">
+            <h1 class="morph-text">Welcome to My Landing Page</h1>
+            <button class="btn" onclick="nextSlide()">Next</button>
+        </div>
+        <div class="section" id="about">
+            <h1>Profil Singkat</h1>
+            <img src="27..jpg" width="100" height="100">
+            <p> 
+                Nama: Agam Al Hakim Hasibuan
+                Tempat & Tahun Lahir: Pekanbaru, Riau, 2005
+                
+                Pendidikan:
+                ..>SDN 016 Kenantan Tapung, Kab. Kampar, Riau
+                ..>Ponpes As-Salam Naga Beralih, Kampar Utara
+                ..>SMA Negeri 4 Tapung, Muara Mahat Baru, Kab. Kampar, Riau
+                ..>Universitas Pahlawan Tuanku Tambusai, Kab. Kampar, Riau (Jurusan Teknik Informatika)
+                
+                Minat & Keahlian :
+                Sejak kecil,saya sudah memiliki minat dalam dunia teknologi dan pemrograman. Seiring perjalanan pendidikan saya,saya semakin mendalami pengembangan web dan desain web.
+                dan Saat ini,saya aktif mengembangkan berbagai proyek berbasis web, termasuk:
+                
+                Jasa Joki Tugas Dari SMK/SMA Hingga perkuliahan
+                Jasa Pembuatan Website Dari proyek apapun
+                
+                Keahlian Teknis
+                Frontend: HTML, CSS (Bootstrap), JavaScript
+                Backend: Python (Flask), PHP, Node.js, Firebase
+                Hosting & Deployment: GitHub Pages, Google Hosting
+                edit foto 
+                
+                Motivasi Pribadi: 
+                "jadilah seseorang yang bersemangat dalam belajar, memiliki jiwa kreatif, dan tekad kuat dalam dunia pengembangan web. Kamu tidak hanya ingin menguasai pemrograman, tetapi juga ingin menerapkannya dalam proyek nyata yang bisa membantu banyak orang."</p>
+            <a href="https://q4321-art.github.io/WWW.PENJOKI.ID/" target="_blank" class="btn">Kunjungi Website</a>
+            <button class="btn" onclick="nextSlide()">Klik Lebih Lanjut</button>
+        </div>
+        <div class="section" id="contact">
+            <h1>Kontak saya melalui</h1>
+            <div class="contact-item">
+                <img src="logo 1.png" alt="Email Icon">
+                <p><a href="mailto:agam06614@gmail.com">agam06614@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <img src="logo 3.jpg" alt="TikTok Icon">
+                <p><a href="https://vm.tiktok.com/ZSM7yvnFG/@wak sentot_25" target="_blank">@wak sentot_25</a></p>
+            </div>
+            <div class="contact-item">
+                <img src="logo 4.jpg" alt="Instagram Icon">
+                <p><a href="https://www.instagram.com/hakimagamal?igsh=bnF6czh4MWhzY3Ey" target="_blank">@hakimagamal</a></p>
+            </div>
+            <button class="btn back-btn" onclick="prevSlide()">Kembali</button>
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+        function nextSlide() {
+            if (currentIndex < 2) {
+                currentIndex++;
+                gsap.to(".container", { x: -currentIndex * window.innerWidth, duration: 0.8, ease: "power3.out" });
+            }
+        }
+        function prevSlide() {
+            currentIndex = 0;
+            gsap.to(".container", { x: 0, duration: 0.8, ease: "power3.out" });
+        }
+        window.addEventListener("resize", () => {
+            gsap.set(".container", { x: -currentIndex * window.innerWidth });
+        });
+        gsap.fromTo(".morph-text", { opacity: 0, scale: 0.5, x: -50 }, { opacity: 1, scale: 1.3, x: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+    </script>
+</body>
+</html>
